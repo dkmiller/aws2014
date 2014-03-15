@@ -3,3 +3,199 @@
 \section{Asymptotics for number fields and class groups}
 \thanksauthor{Melanie Matchett Wood}
 
+
+
+
+
+\subsection{Counting number fields}
+
+\begin{theorem}[Hermite]
+Given $X>0$, there are finitely many number fields $K$ (up to isomorphism, or 
+in $\bar\dQ$) with $|\disc K|<X$. 
+\end{theorem}
+
+\begin{question}
+What are the asymptotics in $X$ of the function 
+$N(X)=\#\{K:|\disc K|<X\}$?
+\end{question}
+
+These types of questions turn out to be easiest to address after restricting to 
+number fields with some fixed invariant. The most obvious of these is the 
+\emph{Galois group}. If $K$ is a number field of degree $n$, the Galois group 
+of $K$, denoted $\gal(K)$, is the image of $\gal(\tilde K/\dQ) \to S_n$, where 
+$\tilde K$ is the Galois closure of $K$. The representation 
+$\gal(\tilde K/\dQ) \to S_n$ is given by the action of $\gal(\tilde K/\dQ)$ on 
+the $n$ homomorphisms $K\to \bar\dQ$. 
+
+\begin{example}
+Write $K=\dQ(\theta)$, and let $\theta_1,\dots,\theta_n$ be the $n$ conjugates 
+of $\theta$ in $\bar\dQ$. Then we are interested in the action of 
+$\gal(\tilde K/\dQ)$ on the set $\{\theta_1,\dots,\theta_n\}$. 
+\end{example}
+
+So for us$, \gal(K)$ is not just an abstract group -- it is a group of 
+permutations.  
+
+\begin{example}
+Let $K$ be a cubic field. Then $\gal(K)\subset S_3$. We call $K$ a \emph{cyclic 
+cubic field} if $K$ is Galois and $\gal(K)=A_3\simeq \dZ/3$. If $K$ is 
+non-Galois, then $\gal(K)=S_3$. 
+\end{example}
+
+We are interested in the asymptotics of the function 
+\[
+  N_\Gamma(X) = \#\{K:|\disc K|<X\text{ and }\gal(K)\simeq \Gamma\} .
+\]
+
+
+
+
+
+\subsection{Local behavior}
+
+Given a place $p$ of $\dQ$ (so $p$ is a prime or $p=\infty$), we can form the 
+completion $K_p = K\otimes_\dQ \dQ_p$. (Recall that $\dQ_\infty=\dR$). This is 
+bigger than the ``honest completion'' of $K$ at a place of $K$. If $p$ is a 
+finite prime, we would have $(p)=\fp_1^{e_1}\cdots \fp_r^{e_r}$ in $\fo_K$. The 
+ring $K_p$ is a direct product of field extensions of $\dQ_p$. More precisely, 
+\[
+  K_p = \prod_i K_{\fp_i} ,
+\]
+where $K_{\fp_i}$ is the completion of $K$ at the prime $\fp_i$. So $K_p$ is an 
+\'etale $\dQ_p$-algebra. The ring $K_p$ captures the splitting, inertia, etc.\ 
+or $p$ in $K$. 
+
+\begin{question}
+What are the asymptotics of 
+\[
+  N_{\Gamma,M}(X) = \#\{K:|\disc K|<X,\gal(K)\simeq \Gamma\text{, and }K_p\simeq M\} ,
+\]
+for some group $\Gamma$ and \'etale $\dQ_p$-algebra $M$?
+\end{question}
+
+\begin{example}
+How many quadratic number fields are there split completely at $7$? This is 
+essentially the study of the function $N_{S_2, \dQ_7^{\times 2}}$. 
+\end{example}
+
+We can also ask probabilistic questions. Define 
+\begin{align*}
+  \dP_{\disc} &(\text{quadratic $K$ split completely at $7$}) \\
+    &= \lim_{X\to \infty} \frac{\#\{K:|\disc K|<X, \gal(K)\simeq S_2\text{ and }K\text{ s.c.\ at $7$}\}}{\#\{K:|\disc K|<X\text{ and }\gal(K)\simeq S_2\}}
+\end{align*}
+
+
+
+
+\subsection{Independence}
+
+Are the probabilities above independent of the prime involved? Consider the 
+following diagram:
+\begin{center}
+\begin{tabular}{c|cccc}
+  & 2 & 3 & 5 & 7  \\ \hline 
+  $\dQ(\sqrt{-3})$ & i & r & i & s \\
+  $\dQ(i)$ & r & i & s & i \\
+  $\dQ(\sqrt 5)$ & i & i & r & i \\
+  $\dQ(\sqrt{-7})$ & s & i & i & r
+\end{tabular}
+\end{center}
+
+Here ``s'' denotes ``split,'' ``i'' denotes ``inert,'' and ``r'' denotes ``ramified.'' 
+\v Cebotarev's density theorem tells us that if we look in a single row, 
+we get $\frac 1 2$ split, none (probabilistically) ramified, and one-half 
+inert. On the other hand, 
+\begin{align*}
+  \dP_{\disc}(\text{$K$ quadratic split at $7$}) 
+    &= \frac{7}{16} \\
+  \dP_{\disc}(\text{$K$ quadratic inert at $7$}) 
+    &= \frac{7}{16} \\
+  \dP_{\disc}(\text{$K$ quadratic ramified at $7$}) 
+    &= \frac{1}{8} .
+\end{align*}
+
+So \emph{\v Cebotarev independence} for us means the (asymptotic) independence 
+of the rows in the chart. This is known. More generally, if we listed all 
+(Galois) number fields in the rows, we have \emph{\v Cebotarev dependence} 
+between two fields if and only if they have no common subfield larger than 
+$\dQ$. 
+
+\begin{question}
+What do we expect for primes?
+\end{question}
+
+In other words, if we fix a prime $p$, how does the ramification data above $p$ 
+vary with the fields. 
+
+
+
+
+
+\subsection{Counting class groups}
+
+Let's begin with a precise question. Consider imaginary quadratic fields. 
+
+\begin{question}
+Given an odd prime $p$ and a finite abelian $p$-group $G$, what proportion of 
+imaginary quadratic fields $K$ (ordered by discriminant) have Sylow 
+$p$-subgroup of the $\class(K)$ isomorphic to $G$?
+\end{question}
+
+Recall that the \emph{class group} of $K$, $\class(K)$ is a finite abelian 
+group. Such groups are the direct sum of their Sylow $p$-subgroups. So we are 
+interested in what, asymptotically, the $p$-part of $\class(K)$ looks like. We 
+restrict to odd primes because \emph{genus theory} tells us something about the 
+case $p=2$. We can also ask for averages of other $f$ over class groups (where 
+$f$ is a characteristic function). 
+
+\begin{example}
+What are 
+\begin{align*}
+  \lim_{X\to \infty} &\frac{\sum_K \left(\frac{\# \class(K)}{p\cdot \class(K)}\right)^k}{\#\{K:\text{$K$ imaginary quadratic and $|\disc K|<X$}\}} \\ 
+  \lim_{X\to \infty} &\frac{\sum K \#\operatorname{Sur}(\class(K), A)}{\text{same}} ?
+\end{align*}
+were $A$ is a finite abelian group and $\operatorname{Sur}(A,B)$ is the number 
+of surjections $A\to B$. 
+\end{example}
+
+For a function $f$ on finite abelian groups, write $M_\text{field}(f)$ for this 
+average. 
+
+
+
+
+
+\subsection{Cohen-Lenstra Heuristics}
+
+The main idea is that ``some things in nature'' occur with frequency inversely 
+proportional to their number of automorphisms. 
+
+\begin{example}
+Consider cubic fields in $\bar\dQ$. The Galois fields occur appear once, but 
+have three automorphisms, while the non-Galois fields appear three times, but 
+have only one automorphism. 
+\end{example}
+
+\begin{conjecture}[Cohen-Lenstra, Gerth for $p=2$]
+For any ``reasonable'' $f$, we have 
+\[
+  M_\text{field}(f) = \lim_{n\to \infty}\frac{\displaystyle\sum_\text{fin.\ ab. gp.\ $|\cdot |\leq n$} \frac{f(G)}{\#\aut(G)}}{\displaystyle\sum_\text{fin.\ ab. gp.\ $|\cdot |\leq n$} \frac{1}{\#\aut(G)}}
+\]
+where the average is taken over $2\class(K)$. 
+\end{conjecture}
+
+Cohen and Lenstra compute $M_\text{group}(f)$ for many examples of $f$. 
+
+\begin{example}
+If $f$ is the characteristic function of the ``odd cyclic part,'' then 
+$M_\text{group}(f)\approx 0.977575\ldots$. 
+\end{example}
+
+\begin{example}
+If $A$ is a finite abelian group and $f(G)=\#\operatorname{Surj}(G,A)$, then 
+$M_\text{group}(f) = 1$. 
+\end{example}
+
+
+
+
