@@ -7,4 +7,185 @@
 
 
 
-d
+\subsection{Analytic number theory}
+
+The first order of business is to clarify what is meant by ``analytic number 
+theory.'' We will do this via example. 
+
+\begin{question}
+How many pairs of integers in $[1,N]\times [1,N]$ are coprime? 
+\end{question}
+
+\begin{question}
+If $X$ is a projective variety over $\dQ$, how many points are there in 
+$X(\dQ)$ of height at most $N$? 
+\end{question}
+
+If $X=\dP_\dQ^1$, then the first question is seen to be a special case of the 
+second. 
+
+\begin{question}
+How many primes are there $\leq N$?
+\end{question}
+
+\begin{question}
+How many totally real cubic fields are there with discriminant $\leq N$?
+\end{question}
+
+We can combine the previous two questions. 
+
+\begin{question}
+How many real totally real cubic fields are there with \emph{prime} discriminant 
+$\leq N$?
+\end{question}
+
+Some of these questions could also be said to fall under ``arithmetic 
+statistics,'' or ``geometric arithmetic statistics.'' 
+
+\begin{question}[Autocorrelation of M\"obius]
+Is $\sum_{n\leq N} \mu(n) \mu(n+1) = o(N)$?
+\end{question}
+
+This falls under the general framework of the \emph{Chowla conjectures}. 
+
+\begin{question}
+What is the probability that a quadratic imaginary field $\dQ(\sqrt{-d})$ 
+($d$ chosen randomly in $[N,2 N]$) has class number prime to $7$? 
+\end{question}
+
+In this question, there is the implicit conjecture that such a probability is 
+well-defined. This falls under the \emph{Cohen-Lenstra heuristics}. 
+
+\begin{question}
+If $n$ is a random square-free integer in $[N, 2 N]$, what is the probability 
+that there exists a totally real quintic field $K/\dQ$ with discriminant $n$? 
+\end{question}
+
+The answer is expected to be $e^{-1/120}$. 
+
+All of these problems fall under ``analytic number theory,'' or ``arithmetic 
+statistics.'' The main idea is that they can all be fruitfully attacked using 
+the tools of arithmetic geometry (\'etale cohomology, \ldots). The phrase 
+``how many'' is meant \emph{asymptotically}. For example, in the first 
+question the answer is $6/\pi^2$, but we do \emph{not} mean that 
+$\#\{(x,y)\in [1,N]\times [1,N]\text{ coprime}\} = \frac{6}{\pi^2} N^2$. 
+Rather, we mean that 
+\[
+  \lim_{N\to \infty} N^{-2} \# \{(x,y)\in [1,N]\times [1,N]\text{ coprime}\} = \frac{6}{\pi^2} .
+\]
+Even better, 
+\[
+  \# \{(x,y)\text{ coprime in }[1,N]\times [1,N]\} = \frac{6}{\pi^2} N^2 + O(N^{2-\delta}) 
+\]
+for some $\delta>0$. This is called a \emph{power-saving error term}. Making 
+$\delta$ as large as possible is a big part of analytic number theory. 
+
+The work ``geometric'' in ``geometric analytic number theory'' should be taken 
+as the same word in ``geometric Langlands.'' We will take geometric analogues 
+of these problems, and attack these problems geometrically. 
+
+
+
+
+
+\subsection{Number fields and function fields}
+
+The following definition is standard. 
+
+\begin{definition}
+A \emph{global field} is either 
+\begin{itemize}
+  \item a \emph{number field} (i.e. a finite extension of $\dQ$) 
+  \item the function field of a curve over a finite field $\dF_q$ (i.e. a field 
+    isomorphic to a finite extension of $\dF_q(t)$)
+\end{itemize}
+\end{definition}
+
+The reason for this slightly complicated definition is that any number field is 
+such in a unique way (i.e. $\dQ$ sits inside fields uniquely). On the other 
+hand, function fields contain $\dF_q(t)$ in many different (i.e. non-isomorphic) 
+ways. We will be mostly be interested in the function field $\dF_q(t)$. 
+
+There is a long list of analogies between these two types of fields. See the 
+table in \cite{p13}. Think of the fields $\dQ$ and $\dF_q(t)$. The ring 
+$\dZ\subset \dQ$ can be defined as 
+\[
+  \{x\in \dQ:|x|_p\leq 1\text{ for all absolute values except }|\cdot |_\infty\} .
+\]
+Similarly, we can ``pin down'' $\dF_q[t]$ as a subring of $\dF_q(t)$. For each 
+$x\in \dF_q(t)$ and for each point $P$ of $\dP^1$, we have an 
+absolute value 
+\[
+  |x|_P = q^{-v_P(x)}
+\]
+If $P=\infty$, we have $v_\infty(f/g) = \deg g - \deg f$. The analogous 
+definition of $\dF_q[t]$ is 
+\begin{align*}
+  \dF_q[t] &= \{x : |x|_P\leq 1\text{ for all $P$ except $\infty$} \} \\
+    &= \{x:x\text{ has no denominator}\} \\
+    &= \{x:x\text{ has no poles away from $\infty$}\} \\
+    &= \{x:x\text{ is a polynomial $P$ with $|x|_\infty = q^{\deg P}$}\} .
+\end{align*}
+
+There is a major difference between $\dQ$ and $\dF_q(t)$. In $\dQ$, there is 
+only one archimedean place $\infty$. In $\dF_q(t)$, the valuation $\infty$ is 
+\emph{not} special -- we can apply any automorphism of $\dP^1$ to move it 
+around, e.g.\ arriving at $\dF_q\left[\frac{1}{1-t}\right]$. 
+
+Over $\dQ$, we think of the ``positive integers'' $\dN$ as a set of 
+coset representatives for $\dZ/\dZ^\times$. Over $\dF_q(t)$, we will think of 
+``monic polynomials'' as a set of coset representatives for 
+$\dF_q[t]/\dF_q[t]^\times$. An interval in $\dZ$ can be thought of as 
+$\{n:|n-n_0|\leq d\}$ for some $d$. Similarly, an \emph{interval} in $\dF_q[t]$ 
+will be a set of the form $\{f:|f-f_0|\leq e\}$. Recall that 
+$|f-f_0| = |f-f_0|_\infty = q^{\deg(f-f_0)}$. For example, 
+$\{f:|f-x^n|\leq q^{n-1}\}$ is precisely the set of monic polynomials of degree 
+$n$. 
+
+
+
+
+
+\subsection{Square-free integers and square-free polynomials}
+
+\begin{question}
+How many integers in $[N,2 N]$ are squarefree?
+\end{question}
+
+One might expect this probability to be 
+\[
+  \left(1-\frac 1 4\right)\left(1-\frac 1 9\right)\left(1-\frac{1}{25}\right) \cdots 
+\]
+and indeed this is correct. Namely, if we call 
+\[
+  \squarefree(N) = \#\{n\in [N, 2 N]:n\text{ is square-free}\} ,
+\]
+then 
+\[
+  \lim_{N\to \infty} N^{-1} \squarefree(N) = \prod_p (1-p^{-2}) = \frac{1}{\zeta(2)} .
+\]
+
+Over $\dF_q[t]$, we consider the intervals consisting of monic polynomials of 
+degree $n$, i.e. polynomials of the form 
+$x^n+ a_1 x^{n-1} + \cdots + a_n$. This is an interval of ``size'' (i.e.\ 
+cardinality) $q^n$. (So think of $q^n$ as $N$.) Let 
+\[
+  \squarefree_q(n) = \#\{\text{square-free polynomials in }\dF_q[t]\text{ of degree $n$}\} .
+\]
+It is known that 
+\[
+  \lim_{n\to \infty} q^{-n} \squarefree_q(n) = 1 - \frac 1 q .
+\]
+Contrary to appearances, this is the same as the previous answer. 
+Heuristically, one might have expected 
+\[
+  \lim_{n\to \infty} q^{-n} \squarefree_q(n) = \prod_{P\text{ irreducible}} (1-q^{-2\deg P}) = \prod_P (1-|P|^{-2}) =: \frac{1}{\zeta_{\dF_q[t]}(2)} .
+\]
+Here, the miracle is that this giant infinite product defining 
+$\zeta_{\dF_q[t]}(2)^{-1}$ collapses to the simple rational number 
+$1-q^{-1}$. It remains to justify the use of the word ``geometric'' when 
+talking about function fields. 
+
+
+
+
