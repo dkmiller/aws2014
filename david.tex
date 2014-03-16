@@ -207,3 +207,205 @@ hyperelliptic curves (i.e. the Katz-Sarnak equidistribution theorem).
 
 
 
+
+\subsection{\texorpdfstring{$L$}{L}-functions over function fields}
+
+Consider the following list of analogies between number fields and 
+function fields. 
+\begin{center}
+\begin{tabular}{c|c}
+  number fields & function fields \\ \hline
+  $\dQ$ & $k=\dF_q(T)$ \\
+  $\dZ$ & $A=\dF_q[T]$ \\
+  $p$ prime & $P(T)$ irreducible monic \\
+  $|n|$ & $q^{\deg F}$
+\end{tabular}
+\end{center}
+The ``Riemann zeta function'' over $\dF_q(T)$ is 
+\begin{align*}
+  \sum_F \frac{1}{|F|^s} 
+    &= \prod_P \left(1-\frac{1}{|P|^s}\right)^{-1} \\
+    &= \sum_{d=0}^\infty \frac{q^d}{q^{d s}} \\
+    &= \sum_{d=0}^\infty (q^{1-s})^d \\
+    &= \frac{1}{1-q^{1-s}}
+\end{align*}
+So the ``Riemann hypothesis'' holds for $\dF_q(T)$. We would like to use this 
+to prove the ``Prime Number Theorem'' for $\dF_q[T]$. Let $a_d$ be the number 
+of prime polynomials $P$ of degree $d$. Put 
+\[
+  \zeta_q(s) = \prod_{d=1}^\infty \left(1-\frac{1}{q^{d s}}\right)^{-a_d} = \frac{1}{1-q^{1-s}} .
+\]
+Make the substitution $u=q^{-s}$, and we get 
+\[
+  \prod_{d=1}^\infty \left(1-\frac{1}{u^d}\right)^{-a_d} = \frac{1}{1-q u} .
+\]
+We can take the logarithmic derivative, and get
+\[
+  u\sum_{d=1}^\infty a_d \frac{d}{du} \log(1-u^d) = u\frac{d}{du}\log(1-q u). 
+\]
+This tells us that 
+\[
+  \sum_{d=1}^\infty \frac{a_d d u^d}{1-u^d} = \frac{q u}{1-q u} .
+\]
+Writing the geometric series, 
+\[
+  \sum_{d=1}^\infty d a_d \sum_{n=1}^\infty u^{d n} = \sum_{d=1}^\infty (q u)^d .
+\]
+We can equate the coefficients of powers of $u$, to obtain 
+\[
+  q^d = \sum_{n\mid d} n a_n 
+\]
+Using M\"obius inversion, we get 
+\[
+  a_n = \frac 1 n \sum_{d\mid n} \mu(d) u^{n/d} .
+\]
+This yields the Prime Number Theorem for function fields:
+
+\begin{theorem}
+$a_n = \frac{q^n}{n} + o(\frac{q^{n/2}}{n}+\frac{q^{n/3}}{n}\sum_{d\mid n}\ldots)$. 
+\end{theorem}
+
+Let $\#\sF_d$ be the number of square-free polynomials of degree $d$. 
+
+\begin{lemma}
+We have 
+\[
+  \#\sF_d = \begin{cases} 
+              q^d - q^{d-1} = \frac{q^d}{\zeta_q(2)} & d\geq 2 \\
+               q^d & d=0,1 
+            \end{cases}
+\]
+\end{lemma}
+\begin{proof}
+Note that $\zeta_q(s) = \zeta_q(2 s) \sum_{n=1}^\infty (\# \sF_d) q^{-d s}$. 
+\end{proof}
+
+Let $K$ be a general function field, i.e. a finite extension of 
+$k=\dF_q(T)$. For example, we could have 
+$K=k(\sqrt[\ell]{D(T)})$ for some irreducible $D\in \dF_q[T]$. Let 
+$\cP_K$ be the set of primes of $K$. If $P\in \cP_K$ has valuation ring 
+$R$, we put $|P| = \#(R/P)$. 
+
+If $k=\dF_q(T)$, then $\cP_k$ is the set of irreducible polynomials in 
+$\dF_q[T]$, together with $\infty$ coming from the valuation ring 
+$\dF_q[\frac 1 T]$. Let $\cD_k$ be the free abelian group on $\cP_k$; we 
+call $\cD_k$ the \emph{divisor group} of $k$. If 
+$D=\sum a_P(P)$ is a divisor over $k$, define $\deg D=\sum a_P \deg P$, 
+$|D|=q^{\deg D}$. We have $|D_1+D_2|=|D_1|\cdot |D_2|$. Let 
+$\cD_k^+$ be the set of effective divisors ($D=\sum a_p(P)$ with 
+$a_P\geq 0$ for all $P$). We define 
+\[
+  \zeta_k(s) = \sum_{D\in \cD_k^+} |D|^{-s} = \prod_{P\in \cP_k} \left(1-\frac{1}{|P|^s}\right)^{-1} .
+\]
+
+\begin{example}
+We have 
+\[
+  \zeta_{\dF_q(x)}(s) = \prod_{P\subset \dF_q[x]}\left(1-\frac{1}{|P|^s}\right)^{-1} \prod_{P=\infty} \left(1-\frac{1}{q^s}\right)^{-1} = \frac{1}{(1-q^{1-s})(1-q^{-s})} .
+\]
+\end{example}
+
+\begin{example}
+Let $K=\dF_q(x)(\sqrt{D})$, where $D$ is irreducible. Then 
+\begin{align*}
+  \frac{\zeta_K(s)}{\zeta_k(s)} 
+    &= \prod_{\substack{P\in S_k \\P\text{ inert in $k$}}} \frac{(1-|P|^{-2 s})^{-1}}{(1-|P|^{-s})^{-1}}\prod_{\substack{P\in S_K \\ P\text{ splits in $K$}}} \frac{(1-|P|^{-s})^{-2}}{(1-|P|^{-s})^{-1}}
+\end{align*}
+Write 
+\[
+  \frac{\zeta_K(s)}{\zeta_k(s)} = \prod_{P\in S_k}(1-\chi_K(P)|P|^{-s})^{-1} ,
+\]
+where 
+\[
+  \chi_K(P) = \begin{cases} 1 & P\text{ splits} \\ -1 & P\text{ inert} \\ 0 & P\text{ ramifies} \end{cases}
+\]
+We are looking at $y^2-D(x)\mod P$, and putting $\chi_K(P)=\left(\frac{D}{P}\right)$, 
+the Dirichet character modulo $D$. Thus 
+\[
+  \frac{\zeta_K(s)}{\zeta_k(s)} = L(s,\chi_D) (1-q^{-s})^{-\lambda_D} 
+\]
+where $\lambda_D=1$ if $\deg D$ is even, and $0$ if $\deg D$ is odd. 
+\end{example}
+
+\begin{theorem}
+Let $\chi$ be a non-trivial Dirichlet character to the modulos $\fm$. Then 
+$L(s,\chi) = \sum_F \frac{\chi(F)}{|F|^s}$ is a polynomial in $q^{-s}$ of degree 
+at most $\deg\fm-1$. 
+\end{theorem}
+\begin{proof}
+Write $L(s,\chi) = \sum_{n=0}^\infty A(n,\chi) q^{-n s}$, where 
+$A(n,\chi) = \sum_{\deg F=n} \chi(n)$. If $n\geq \deg \fm$, then each residue 
+class modulo $\fm$ is represented exactly $q^{n-\deg\fm}$ times. So 
+\[
+  A(n,\chi) = q^{n-\deg\fm} \sum_{r\mod \fm} \chi(r) = 0 .
+\]
+\end{proof}
+
+This works in general. 
+
+\begin{theorem}
+Let $\zeta_k(s) = \frac{P_k(q s)}{(1-q^{-s})(1-q^{1-s})}$. Then $P_k$ is a 
+polynomial of degree at most $2 g$ in $q^{-s}$. 
+\end{theorem}
+\begin{proof}
+Use the Riemann-Roch theorem. Let $b_n(k)$ be the number of effective divisors 
+of degree $n$. By the Riemann-Roch theorem, for $n>2 g-2$, we have 
+\[
+  b_n(k) = h_k \frac{q^{n-g+1}-1}{q-1} 
+\]
+so consider 
+\[
+  Z_k(u) = \sum_{n=1}^\infty b_n u^n 
+\]
+and use the previous formula. We have $Z_k(u)=\frac{P_k(u)}{(1-u)(1-q u)}$. Let's 
+look at the zeros of $P_k(u)$, so write 
+$P_k(u) = \prod_{i=1}^{2 g} (1-u \alpha_j(k))$. If $\zeta_k(s)=0$, then 
+$q^{-s} = \alpha_j(k)^{-1}$ for some $j$. So the Riemann Hypothesis tells us that 
+$\zeta_k(s)=0$ iff $s=1/2$< i.e. iff $|\alpha_j(k)|=\sqrt q$. 
+\end{proof}
+
+\begin{theorem}[Weil, Stephanov-Bombieri]
+The zetos of $\zeta_k(s)$ have $\Re(s)=\frac 1 2$, i.e. 
+$|\alpha_j(k)| = \sqrt q$. 
+\end{theorem}
+
+\begin{corollary}
+If we let $a_n(k) = \#\{P\in S_k\text{ of degree $N$}\} = \frac{q^N}{N}+O(q^{N/2})$. 
+\end{corollary}
+
+There is another formulation for $Z_k(u)$. Recall that 
+$-\log(1-u) = \sum_{n=1}^\infty \frac{u^n}{n}$. We compute 
+\begin{align*}
+  \log Z_k(u) 
+    &= \log \prod_{d=1}^\infty (1-u^d)^{-a_d(k)} \\
+    &= \sum_{d,m} a_d(k) \frac{u^{d_m}}{m} \\
+    &= \sum_{n=1}^\infty N_n(k) \frac{u^n}{n}
+\end{align*}
+where $N_n(k) = \sum_{d\mid n} d a_d(k)$. Moreover, 
+\[
+  \log Z_k(u) = \log\left(\frac{P_k(u)}{(1-u)(1-q u)}\right) = \sum \frac{u^n}{n} + \sum \frac{(q u)^n}{n} - \sum_{j=1}^{2 g} \sum_n \frac{\alpha_j(C)^n}{n} u^n .
+\]
+We can equate coefficients to get that $N_n(k)$ is the number of primes of 
+degree $1$ in $\dF_{q^n} k$. Even better, 
+$N_n(k) = q^n+1 - \sum_{j=1}^{2 g} \alpha_j(C)^n$. To relate this to Jordan's 
+talks, we need to relate function fields with curves. 
+\begin{center}
+\begin{tabular}{c|c}
+function fields $\dF_q(C)=dF_q[x,y]/(F)$ & curves over $\dF_q$, given by $F(x,y) = 0$ \\ \hline
+$\dF_q(\sqrt D)$ & $y^2 = D(x)$ \\
+primes in $\dF_q(C)$ & Galois orbits of points on $C(\bar\dF_q)$ \\
+primes of degree one & points in $C(\dF_q)$ \\
+primes of degree one in $\dF_{q^n} k$ & points in $C(\dF_{q^n})$
+\end{tabular}
+\end{center}
+
+So 
+\[
+  Z_k(u) = \exp\left(\sum_{n=1}^\infty \# C(\dF_{q^n}) \frac{u^n}{n}\right) = Z_C(u) .
+\]
+So instead of talking about zeta functions of function fields, we will talk about 
+zeta functions of curves. 
+
+
+
+
