@@ -186,6 +186,130 @@ $\zeta_{\dF_q[t]}(2)^{-1}$ collapses to the simple rational number
 $1-q^{-1}$. It remains to justify the use of the word ``geometric'' when 
 talking about function fields. 
 
+The above follows from this surprising lemma. 
+
+\begin{lemma}
+We have $\squarefree_q(n) = q^n(1-\frac 1 q)$ for all $n>1$. 
+\end{lemma}
+\begin{proof}
+Let $\Sigma_{n,e}$ be the number of monic polynomials of degree $n$ of the form 
+$a(t) b^2(t)$, where $a$ is squarefree and $\deg(b)=e$. All $q^n$ polynomials 
+can be factored (uniquely) in this way, so 
+$q^n = \sum_{e=1}^{\lceil n/2\rceil} \# \Sigma_{n,e}$. We have 
+$\# \Sigma_{n,e} = q^e \squarefree_q(n-2 e)$. By induction, starting from 
+$\squarefree_q(0)=1$ and $\squarefree_q(1)=q$, we get the desired result. 
+\end{proof}
+
+In some ways, this is the ``motivic proof'' of our result. We'd like to give a 
+more obviously ``geometric'' proof. 
+
+The absence of an error term is misleading. For a general function field 
+$\dF_q(C)$, the natural analogue 
+$\squarefree_C(n) = \zeta_C(2)^{-1}\cdot q^n + \textnormal{error}$, where the 
+error is non-zero. It was worked out in great detail by Byunjchul Cha in 2011. 
+
+
+
+
+
+\subsection{Configuration spaces of polynomials}
+
+How do you tell whether an integer / polynomial is square-free? In $\dZ$, this 
+is somewhat hard. For polynomials in $k[t]$, we compute the discriminant. For 
+example, suppose $P(t) = t^3+a_1 t^2 + a_2 t + a_3$. The polynomial $P$ is 
+square-free if and only if 
+\[
+  a_2^2 a_1^2 - 4 a_3 a_1^3 - 4 a_2^3 + 18 a_3 a_2 a_1 - 27 a_3^2 \ne 0 .
+\]
+In fact, this is $\Delta(P)=\prod_{i\ne j} (\theta_i-\theta_j)$, where the 
+$\theta_i$ are the roots of $P$. Clearly $\Delta$ is a polynomial in the 
+$\theta_i$ which is fixed under permutations of the $\theta_i$. Thus it follows 
+abstractly that it is a polynomial in the $a_i$. The same argument works for 
+polynomials of arbitrary degree. 
+
+We can construct the \emph{moduli space of square-free polynomials}. This is 
+the open subvariety of $\dA_{a_1,\dots,a_n}^n$ (the ``moduli space of monic 
+degree-$n$ polynomials'') where $\Delta$ does not vanish. Denote this space 
+by $\conf^n$. In general, $\conf^n(k)$ is the set of square-free monic 
+polynomials of degree $n$ with coefficients in $k$. Note that 
+$\squarefree_q(n) =\# \conf^n(\dF_q)$. We will think of $\conf^n$ as a scheme 
+over $\spec(\dZ)$. 
+
+Note that $\conf^n(\dC)$ is the set of \emph{unordered} $n$-tuples of 
+\emph{distinct} complex numbers via the isomorphism 
+\[
+  P\mapsto \{\text{roots of }P\} .
+\]
+We could think of $\conf^n(\dC)$ as the ``configuration space of $n$ distinct 
+points in $\dC$.'' The set $\conf^n(\dC)$ is a manifold, so we can investigate 
+its topology. Note that $\conf^1(\dC)=\dC$. The space $\conf^2(\dC)$ of 
+unordered pairs of distinct points can be understood as the quotient of the 
+space of \emph{unordered} pairs of distinct points is homotopy-equivalent to 
+$S^1$. Forgetting the ordering corresponds to quotienting out by the antipodal 
+map, so $\conf^2(\dC)\approx S^1$. 
+
+As $n$ grows, the spaces $\conf^n$ get more complicated, e.g.\ the fundamental 
+group $\pi_1(\conf^n(\dC))$ can be described as follows. A loop in 
+$\conf^n(\dC)$ is a way of ``moving around'' a collection of $n$ distinct 
+points, ending up with the same configuration of $n$ points. These are exactly 
+braids on $n$ points, and composition of loops corresponds to the standard 
+composition of braids. Thus $\pi_1(\conf^n(\dC))\simeq \braid_n$, the Artin 
+braid group on $n$ strands. 
+
+\begin{theorem}[Arnol'd]
+For all $n>1$, 
+\begin{align*}
+  \h^0(\conf^n(\dC),\dQ) &=\dQ \\
+  \h^1(\conf^n(\dC),\dQ) &= \dQ \\
+  \h^i(\conf^n(\dC),\dQ) &= 0 \qquad (i>1) .
+\end{align*}
+\end{theorem}
+In other words, $\h^\bullet(\conf^n(\dC),\dQ) \simeq \h^\bullet(S^1,\dQ)$. If 
+we allow integral coefficients, things become much more interesting. This 
+theorem can be interpreted as a result in homological stability. The same 
+phenomenon occurs for $\cM_g$, the moduli space of genus $g$ curves for 
+$g\gg 0$. 
+
+
+
+
+
+\subsection{\'Etale cohomology of configuration spaces}
+
+We'll start with the Grothendieck-Lefschetz trace formula. It says that for any 
+variety $X$ over $\dF_q$, we have 
+\[
+  \# X(\dF_q) = \sum_i (-1)^i \trace\left(\frob|\h_{\et,c}^i(X_{\bar\dF_q},\dQ_\ell)\right) .
+\]
+Here $\ell$ is any prime not dividing $q$. The vector space 
+$\h_{\et,c}^i(X_{\bar\dF_q},\dQ_\ell)$ carries an action of the pro-cyclic 
+group $\gal(\bar\dF_q/\dF_q) = \langle \frob\rangle$. 
+
+When $X$ is a variety that ``makes sense'' over both $\dC$ and $\dF_q$ (e.g.\ 
+a proper smooth variety over $\spec\dZ$), we may hope 
+\[
+  \dim_{\dQ_\ell} \h^i_\et(X_{\bar\dF_q},\dQ_\ell) = \dim_\dQ \h^i(X(\dC),\dQ) .
+\]
+Under ``good circumstances,'' this is the case. The configuration spaces 
+$\conf^n$ fit into these circumstances, so we have (for all $n>2$) 
+\begin{align*}
+  \h_\et^0(\conf^n_{\bar\dF_q},\dQ_\ell) &= \dQ_\ell \\
+  \h_\et^1(\conf^n_{\bar\dF_q},\dQ_\ell) &= \dQ_\ell \\
+  \h_\et^i(\conf^n_{\bar\dF_q},\dQ_\ell) &= 0 \qquad (i>1)
+\end{align*}
+Moreover, Frobenius acts as $1$ on $\h_\et^00$, and as $q$ on $\h_\et^1$. 
+
+Poincar\'e duality relates $\h_\et^i$ with $\h^{2n-i}_{\et,c}$. It follows 
+that 
+\begin{align*}
+  \# \conf^n(\dF_q) &= q^n = \sum (-1)^i \trace(\frob\h^i_\et(\conf^n_{\bar\dF_q},\dQ_\ell)^\vee) \\
+    &= q^n\left(\trace(\frob|{\h^0}^\vee) - \trace(\frob|{\h^1}^\vee)\right) \\
+    &= q^n\left(1-\frac 1 q\right) \\
+    &= q^n-q^{n-1} .
+\end{align*}
+So the reason for the lack of error term in our formula for $\conf_n(q)$ is the 
+fact that $\conf^n$ satisfies an ``Arnol'd theorem.'' 
+
 
 
 
