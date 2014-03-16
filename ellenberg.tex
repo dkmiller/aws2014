@@ -310,6 +310,124 @@ that
 So the reason for the lack of error term in our formula for $\conf_n(q)$ is the 
 fact that $\conf^n$ satisfies an ``Arnol'd theorem.'' 
 
+Recall that we were interested in counting square-free integers in 
+$[N, 2 N]$, monic square-free polynomials of degree $n$ in $\dF_q[t]$, and 
+computing the cohomology of the moduli space of degree-$n$ square-free 
+polynomials in $\dC[t]$. 
+
+We are in a position to clarify what is meant by geometric analytic number 
+theory. Start with some problem over $\dZ$ (or over some number field). 
+Consider the analogous problem over $\dF_q(t)$. Hope that this problem can be 
+interpreted as the problem of studying $\# X_n(\dF_q)$ for some sequence 
+$\{X_n\}$ of varieties. Finally, we formulate a geometric / topological 
+assertion about $X_\bullet$ over $\dC$ which implies the above. 
+
+
+
+
+\subsection{Chowla conjecture}
+
+Let $\mu$ the M\"obius function defined by 
+\[
+  \mu(n) = \begin{cases} 0 & n\text{ not squarefree} \\ (-1)^k & n\text{ a product of $k$ distinct primes} \end{cases}
+\]
+We would expect this to be a random sign (from an additive point of view). For 
+example, we would expect 
+\[
+  \sum_{i=N}^{2 N} \mu(n) = o(N) ,
+\]
+i.e.\ that $\lim_{N\to \infty} \frac{1}{N}\sum_{i=N}^{2 N} \mu(i) = 0$. The 
+question of whether 
+\[
+  \frac 1 N \sum_N^{2 N} \mu(n) \mu(n+1) \to 0
+\]
+is wide open. 
+
+\begin{conjecture}[Chowla]
+\[
+  \sum_{n=N}^{2 N} \mu(n+a_1)^{\varepsilon_1} \cdots \mu(n+a_1)^{\varepsilon_r} = o(N) .
+\]
+\end{conjecture}
+
+The analogue of the Chowla conjecture over finite fields is also open. The 
+slogan is: facts about arithmetic statistics in function fields in the ``large 
+$q$ limit'' correspond to facts about irreducible components (i.e. $\h^0$) of 
+moduli spaces. 
+
+As a specific example, consider sums 
+\[
+  \sum_{\deg f=n} \mu(f)\mu(f+1) .
+\]
+Note that $\mu(f)=0$ if and only if $\Delta(f)=0$ if and only if $f$ is not 
+square-free. In fact, $\mu(f) = (-1)^n \chi(\Delta(f))$, were 
+$\chi:\dF_q^\times \to \dZ^\times$ is the unique non-trivial character. So 
+\begin{align*}
+  \mu(f) \mu(f+1) 
+    &= \chi(\Delta(f))\chi(\Delta(f+1)) \\
+    &= \chi(\Delta(f)\Delta(f+1)) \\
+    &= \#\{\text{square roots of $\Delta(f)\Delta(f+1)$}\} - 1.
+\end{align*}
+So let $Y_n$ be the moduli space of pairs $(f,y)$, where $y$ is a square root 
+of $\Delta(f)\Delta(f+1)$. In other words, $Y^n$ has equation 
+$y^2=\Delta(f)\Delta(f+1)$. So $Y_n \to \dA^n$ is a double cover ramified at 
+$V(\Delta(f)\Delta(f+1))$, the map being $(f,y)\mapsto f$. So 
+\begin{align*}
+  \sum_f \mu(f)\mu(f+1) 
+    &= \sum_f \left(\#\{\text{square roots of $\Delta(f)\Delta(f+1)$}\} - 1\right) \\
+    &= \# Y_n(\dF_q) - q^n .
+\end{align*}
+We hope that this is $o(q^n)$, i.e. we want 
+$\# Y_n(\dF_q) = q^n + o(q^n)$. 
+
+\begin{conjecture}[geometric Chowla]
+For all $n\geq 0$, the variety $Y_n$ is irreducible, and there is a constant 
+$\alpha>0$ such that $\h_{\et,c}^{2n-i}(Y_n,\dQ_\ell) = 0$ for all 
+$i<\alpha n$. 
+\end{conjecture}
+
+Instead of asking about $\lim_{n\to \infty} q^{-n} \# Y_n(\dF_q)$, what about 
+$\lim_{q\to \infty} q^{-n} \# Y_n(\dF_q)$? Or what about 
+\[
+  \lim_{n\to \infty} \lim_{q\to \infty} q^{-n} \# Y_n(\dF_q) .
+\]
+
+\begin{theorem}[Cerman-Rudnick]
+Let $\dF_q$ have odd characteristic, and let $a_1,\dots,a_m$ be distinct 
+polynomials in $\dF_q[t]$. Then 
+\[
+  \sum_{\deg f=n} \mu(f+a_1)^{\varepsilon_1} \cdots \mu(f+a_m)^{\varepsilon_m} \leq 2 m n q^{n-1/2} + 3 m n^2 q^{n-1} .
+\]
+if not all the $\varepsilon_i$ are even 
+\end{theorem}
+Note that the upper bound is $o(q^n)$ as $q\to \infty$ with $n$ fixed. The main 
+idea is that 
+\[
+  \# Y_n(\dF_q) = \sum (-1)^i \trace( \frob,\h_{\et,c}^{2n-i}(Y_n,\dQ_\ell)) .
+\]
+The Weil bounds (a theorem of Deligne) give upper bounds for the eigenvalues 
+of Frobenius acting on $\h_{\et,c}^{2n-i}(Y_n,\dQ_\ell)$. These eigenvalues 
+have absolute value at most $q^{n-i/2}$. The sum of all Betti numbers can 
+be bounded independently of $q$ by some $B$. So the contribution of 
+$\h^{2n-i}$ for all $i>0$ is at most $B q^{n-1/2}$, while 
+$\h^{2n}(Y_n,\dQ_\ell)$ contributes something a bit more complicated. 
+The space $\h^{2n}_{\et,c}(Y_n,\dQ_\ell)$ is spanned by irreducible 
+components of $Y_n$. Frobenius acts by $q^n$ times a permutation action on 
+components. 
+
+So $\trace(\frob,\h^{2n}) = \#\{\dF_q\text{-rational irreducible components}\}$. 
+So one needs to show that $Y_n$ is geometrically irreducible. This is true 
+unless $\Delta(f)\Delta(f+1)$ is a perfect square (as a polynomial). It's not, 
+and this is the geometric heart of the argument. 
+
+One way to think of this: the \'etale double cover of 
+$\dA^n\minus V(\Delta(f)\Delta(f+1))$ given by adjoining 
+$\sqrt{\Delta(f)\Delta(f+1)}$. This is given by a map 
+\[
+  \gal(k(a_1,\dots,a_n)) \to \dZ/2 .
+\]
+We are interested in the image of this Galois representation. We need to know 
+that it is surjective (i.e. that we have \emph{big monodromy}). 
+
 
 
 
