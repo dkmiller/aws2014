@@ -193,6 +193,129 @@ theorem.
 $\mu(\text{smooth plane curves in $\dP^2$ over $\dF_2$}) = \frac{21}{64}$. 
 \end{theorem}
 
+\begin{proof}[Proof of Bertini theorem]
+We'll do the case $X=\dA^2\subset \dP^2$. Identify $f\in S_{\hom}$ with its 
+dehomogenization $f(1,x,y)\in \dF_q[x,y]$. Recall that $f\in \cP$ if and only 
+if $H_f$ is smooth (of dimension $1$) at each closed point $P\in \dA^2$. For 
+each $P$, $H_f$ is smooth at $P$ if and only if 
+$f(P), \frac{\partial f}{\partial x}(P), \frac{\partial f}{\partial y}(P)$ are 
+not all zero in $\kappa(P)=\dF_{q^{\deg P}}$. A fake proof is: 
+\[
+  \prob(H_f\text{ is smooth at }P) = 1-\frac{1}{q^{3\deg P}} \Rightarrow \prob(H_f\text{ smooth}) = \prod_{P\in \dA^2}\left(1-\frac{1}{q^{3\deg P}}\right) ,
+\]
+which is our zeta value $\zeta_{\dA^2}(3)^{-1}$. 
+
+As with square-free integers, we'll choose a cutoff $r$, and call degree 
+$\leq r$ \emph{low}, degree between $r$ and $d/3$ \emph{medium}, and degree 
+$>d/3$ \emph{high}. We will treat these cases separately. Let 
+\[
+  \cP_r = \{f\in S_{\hom}:H_f\text{ is smooth at all $P$ with $\deg P\leq r$}\}
+\]
+
+\begin{lemma}
+$\mu(\cP_r) = \prod_{\deg P\leq r} \left(1-\frac{1}{q^{3\deg P}}\right)$. 
+\end{lemma}
+\begin{proof}
+Let $\fm_P\subset \dF_q[x,y]$ be the maximal ideal corresponding to $P$. Let 
+$I=\prod_{\deg P\leq r} \fm_P^2$. Then $f\in S_d$ belongs to $\cP_r$ if and 
+only if the image of $f$ under  
+\[
+  \dF_q[x,y]_{\leq d} / I \xrightarrow{\phi_d} \prod_{\deg P\leq r} \dF_q[x,y]/\fm_P^2
+\]
+is non-zero in each factor. For this to work, we need $\phi_d$ to be 
+surjective when $d\gg 0$, but this is obvious. 
+\end{proof}
+
+How large must $d$ be? Let $V_d=\im(\phi_d)$. Then $V_{d+1}=V_d+x V_d+y V_d$. 
+The sequence $V_0\subset V_1\subset \cdots \subset \cdots$ must terminate at 
+some $D$. In fact, once $V_D=V_{D+1}$, we know that $\phi_D$ is surjective. In 
+fact, $D\leq \dim_{\dF_q}(\dF_q[x,y]/I)$. Thus $\phi_d$ is surjective for 
+$d\geq \dim_{\dF_q}(\dF_q[x,y]/I)$. 
+
+Now we look at points of medium degree. Let 
+\[
+  Q_r = \bigcup_d \{f\in S_d : \text{there is $P$ with $r<\deg P\leq d/3$ at which $H_f$ not smooth}\} .
+\]
+\begin{lemma}
+$\bar\mu(Q_r)\to 0$ as $r\to \infty$. 
+\end{lemma}
+\begin{proof}
+The map $\dF_q[x,y]_{\leq d} \to \dF_p[x,y]/\fm_P^2$ is surjective for all 
+$P$ with $d\geq 3\deg P$. Thus 
+\[
+  \bar\mu(Q_r) \leq \limsup_{d\to \infty} \sum_{r<\deg P\leq d/3} \frac{1}{q^{3\deg P}} \to 0 .
+\]
+\end{proof}
+
+The tricky part is handling large degree points. 
+\begin{lemma}
+Fix a curve $Z\subset \dA^2$, i.e. $\dim Z=1$. Then 
+\[
+  \frac{\#\{f\in \dF_q[x,y]_{\leq d}:f|_Z=0\}}{\#\dF_q[x,y]_{\leq d}} \leq q^{-d} .
+\]
+\end{lemma}
+\begin{proof}
+Choose a coordinate, say $x$, such that $x$ is non-constant on $Z$. We would 
+like to bound the size of the kernel in 
+\[
+  0 \to \ker \to \dF_q[x,y]_{\leq d} \to \h^0(\sO_Z) .
+\]
+Note that the image has dimension at least $d+1$, because it contains 
+$1,x,\ldots,x^d$. 
+\end{proof}
+
+We are trying to bound the size of the set 
+\[
+  \cR = \bigcup_d \{f\in S_d:H_f\text{ is not smooth at some $\deg P>d/3$}\} .
+\]
+\begin{lemma}
+$\mu(\cR)=0$. 
+\end{lemma}
+\begin{proof}
+Write $f=f_0+g_1^p x + g_2^p y + h^p$, for random $f_0,g_1,g_2, h$ of degrees 
+$\leq d$, $\leq \frac{d-1}{p}$, $\leq \frac{d-1}{p}$, $\leq \frac d p$. This is 
+a random element of $\dF_q[x,y]_{\leq d}$. We have 
+\begin{align*}
+  \frac{\partial f}{\partial x} &= \frac{\partial f_0}{\partial x} + g_1^p \\
+  \frac{\partial f}{\partial y} &= \frac{\partial f_0}{\partial y} + g_2^p .
+\end{align*}
+Given $f_0$, there is at most one $g_1$ with $\partial_x f =0$. So 
+\begin{align*}
+  \prob(g_1\text{ is s.t.} \dim\{\partial_x f=0\}\leq 1 | \text{choice of $f_0$}) 
+    &\approx 1 \\
+   \prob(g_g\text{ is s.t.} \dim\{\partial_x f=\partial_y f=0\}\leq 0 | \text{choice of $f_0,g_1$})
+    &\approx 1 .
+\end{align*}
+The condition $\dim\{\partial_x f = \partial_y f = 0\}\leq 0$ fails if and only 
+if $\partial_y f_0 + g_2^q$ vanishes on some component of $\{\partial_x f=0\}$. 
+\end{proof}
+
+We know that $\cP=\cP_r\minus Q_r\minus \cR$. As $r\to \infty$, 
+$\mu(\cP_r \to \zeta_{\dA^2}(3)^{-1}$, 
+$\bar\mu(Q-r) \to 0$, and $\mu(\cR)=0$. Thus we have proved that 
+$\mu(\cP)=\zeta_{\dA^2}(3)^{-1}$. 
+\end{proof}
+
+There are variants of the Bertini theorem. For example, we could prescribe the 
+Taylor coefficients at finitely many points. This lets us answer a question of 
+Nick Katz (the question was also resolved by Ofer Gabber). Given a nice variety 
+$X$ over $\dF_q$ of dimension $\geq 1$ (Here, ``nice'' means ``smooth, 
+projective and geometrically integral.), there is a nice curve 
+$Y\subset X$ such that $Y(\dF_q)=X(\dF_q)$.  
+
+Also, you can use the Bertini theorem to obtain abelian varieties as quotients 
+of Jacobians of curves (which are themselves contained in the abelian variety). 
+Let $A$ be of dimension $\geq 1$ over $\dF_q$. Then there is a nice curve 
+$X\subset A$ such that $\operatorname{Jac} X\to A$ is surjective. The trick 
+is to find $X$ passing through all $\ell$-torsion points of $A$. This forces 
+$\operatorname{Jac} X$ to have $\ell^{2\dim A}$ torsion points, i.e. it has 
+the same dimension as $A$. 
+
+In Nguyen's thesis, we have a Whitney embedding theorem for finite fields. 
+Let $X$ be a nice curve over $\dF_q$. Then there is a closed immersion 
+$X\hookrightarrow \dP_{\dF_{q^3}}$ if and only if for each $e\geq 1$, 
+$\# X(\dF_{q^e}) \leq \dP^3(\dF_{q^e})$. 
+
 
 
 
