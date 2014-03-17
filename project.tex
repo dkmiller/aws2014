@@ -21,7 +21,36 @@ $H_f\subset \dP_\kappa^n$ be the corresponding hypersurface. We would like
 \[
   \#\{f\in S_d:H_f\cap X\text{ is smooth}\} = q^{\binom{n+d}{n}} + O(q^r) ,
 \]
-where $r$ is some explicit 
+for some $r<\binom{n+d}{n}$. 
+
+Let's start with a baby case. We can study the density of the set of 
+polynomials $f\in \dF_q[t]$ such that $V(f)$ is smooth, i.e. $f$ has no 
+double roots. We would like 
+\[
+  \#\{f\in \dF_q[t]_{\leq d} : f\text{ squarefree}\} = \left(1-\frac 1 q\right) q^{d+1} + O(q^{d+1-\varepsilon}) .
+\]
+for some (hopefully explicit) $\varepsilon>0$. Recall that 
+\[
+  1-\frac 1 q = \prod_{x\in |\dA_{\dF_q}^1|} (1-|x|^{-2}) = \zeta_{\dA_{\dF_q}^1}(2)^{-1} .
+\]
+Let $X=\dA_{\dF_q}^1$. Let $r\geq 0$ be an integer, and let $X_{<r}$ be the 
+set of closed points in $X$ of degree $<r$. 
+
+
+
+
+
+\section{Abstract sieves}
+
+Let $X$ be a set with a function $d:X\to \dN$. We assume that for all 
+$n\geq 1$, the sets $X_n=\{x\in X:d(x) = n\}$ are finite. For a set 
+$S\subset X$, consider 
+\[
+  \theta_S(n) = \#(S\cap X_n). 
+\]
+The hope is for $\theta_S\sim \alpha\theta_X$ for some real number $\alpha$. 
+Even better, we would like $\theta_S=\alpha\theta_X+O(\theta_X^{1-\varepsilon})$ 
+for some $\varepsilon>0$. 
 
 
 
