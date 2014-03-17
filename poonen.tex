@@ -319,3 +319,183 @@ $\# X(\dF_{q^e}) \leq \dP^3(\dF_{q^e})$.
 
 
 
+
+\subsection{Selmer group heuristics}
+
+Let $G=\gal(\bar\dQ/\dQ)$ be the absolute Galois group of $\dQ$. Let 
+\[
+  \dQ_v = \begin{cases} \dR & v=\infty \\ \dQ_p & v=p \end{cases}
+\]
+Let $\dA$ be the ring of adeles of $\dA$, i.e. 
+\[
+  \dA = \prod_v' (\dQ_v,\dZ_v) = \{(a_v)\in \prod \dQ_v:a_v\in \dZ_v\text{ almost all }v\} .
+\]
+
+
+\begin{theorem}
+Let $E$ be an elliptic curve over $\dQ$. Then $E(\dQ)$ is finitely generated. 
+\end{theorem}
+
+There is basically only one proof of this. First, one shows ``weak 
+Mordell-Weil.'' i.e. that $E(\dQ)/n$ is finite for some $n\geq 2$. Then one 
+uses height functions to get the general case. Consider the exact sequence 
+\[
+  0 \to E[n] \to E\xrightarrow n E \to 0
+\]
+of sheaves on the \'etale site of $\dQ$. We can take $G$-invariants (i.e. 
+$\h_\et^0$) we get a sequence 
+\[
+  0 \to E[n](\dQ) \to E(\dQ) \xrightarrow n E(\dQ) \to \h^1(\dQ, E[n]) \to \h^1(\dQ,E) \xrightarrow n \h^1(\dQ,E) \to \cdots
+\]
+We use $\h^1(\dQ,E)$ as an abbreviation for 
+$\h_\et^1(\dQ,E) = \h^1(G_\dQ,E(\bar\dQ))$. So we have a sequence 
+\[
+  0 \to E(\dQ)/n \to \h^1(\dQ,E[n]) \to \h^1(\dQ,E) .
+\]
+Unfortunately, $\h^1(\dQ,E[n])$ is infinite. We have the same sequence at all 
+places of $\dQ$:
+\[
+  E(\dQ_v)/n \to \h^1(\dQ_v,E[n]) \to \h^1(\dQ_v,E) .
+\]
+Combine all these to get a commutative diagram 
+\[\xymatrix{
+  0 \ar[r] 
+    & E(\dQ)/n \ar[r] \ar[d] 
+    & \h^1(\dQ,E[n]) \ar[r] \ar[d] 
+    & \h^1(\dQ,E) \ar[d] \\
+  0 \ar[r] 
+    & \prod_v E(\dQ_v)/n \ar[r] 
+    & \prod_v\h^1(\dQ_v,E[n]) \ar[r] 
+    & \prod_v \h^1(\dQ_v,E)
+}\]
+We can actually use restricted direct products on the bottom, so we put 
+\begin{align*}
+  E(\dA)/n &= \prod_v' E(\dQ_v)/n \\
+  \h^1(\dA,E[n]) &= \prod_v' \h^1(\dQ_v,E[n]) \\
+  \h^1(\dA,E) &= \prod_v' \h^1(\dQ_v,E)
+\end{align*}
+To sum up, we have a commutative diagram with exact rows:
+\[\xymatrix{
+  0 \ar[r] 
+    & E(\dQ)/n \ar[r] \ar[d] 
+    & \h^1(\dQ,E[n]) \ar[r] \ar[d]^-\beta  
+    & \h^1(\dQ,E) \ar[d]^-\gamma  \\
+  0 \ar[r] 
+    & E(\dA)/n \ar[r]^-\alpha 
+    & \h^1(\dA,E[n]) \ar[r] 
+    & \h^1(\dA,E) 
+}\]
+Define the \emph{$n$-Selmer group} and \emph{Tate-Shafarevich group} of $E$ by 
+\begin{align*}
+  \selmer_n(E) &= \beta^{-1}(\im\alpha) \\
+  \sha(E) &= \ker\gamma .
+\end{align*}
+Standard theorems of algebraic number theory yield the finiteness (and 
+computability) of $\selmer_n E$. 
+
+For an elliptic curve $E$ over $\dQ$, find a model $E:y^2=x^3+A x+B$ with 
+$A,B\in \dZ$ minial, and put $h(E)=\max(|A|^3,|B|^2)$. Let $\cE$ be the set of 
+isomorphism classes of elliptic curves over $\dQ$. For any $x$, put 
+$\cE_{<x} = \{E\in \cE:h(E)<x\}$. 
+
+\begin{definition}
+If $S\subset \cE$, put 
+\[
+  \prob(S)= \lim_{X\to \infty} \frac{\#(S\cap \cE_{<X})}{\# \cE_{<X}} .
+\]
+\end{definition}
+
+Given $p$ and $s$, we are interested in computing 
+\[
+  \prob(\dim_{\dF_p} \selmer_p E = s) .
+\]
+
+
+
+
+
+\subsection{Maximal isotropic subspaces}
+
+Let $V=\dF_p^{\oplus 2 n}$, and let 
+\[
+  Q(x_1,\dots,x_n,y_1,\dots,y_n) .
+\]
+We call $V$ a \emph{hyperbolic quadratic space} over $\dF_p$. The function $Q$ 
+induces a pairing $\langle-,-\rangle$ on $V$ by 
+\[
+  \langle v,w\rangle = Q(v+w)-Q(v)-Q(w) .
+\]
+For $Z\subset V$ an $\dF_p$-subspace, put 
+\[
+  Z^\bot = \{v\in V:\langle v,z\rangle = 0\text{ for all }z\in Z\} .
+\]
+We call $Z$ \emph{isotropic} if $Q|_Z=0$. The space $Z$ is \emph{maximal 
+isotropic} if $Q|_Z=0$ and $Z=Z^\bot$. All maximal isotropic subspaces of $V$ 
+have dimension $n$. 
+
+\begin{example}
+The space $\{(x_1,\dots,x_n,0,\dots,0):x_i\in \dF_p\}$ is maximal isotropic. 
+\end{example}
+
+Put 
+\[
+  \orthogonalgrassmannian_n(\dF_p) = \{\text{maximal isotropic subspaces of $V$}\} .
+\]
+Choose $Z,W\in \orthogonalgrassmannian_n(\dF_p)$ at random. This gives us a random 
+variable $\dim_{\dF_p}(Z\cap W)$. 
+
+\begin{conjecture}[Poonen, Rains]
+For each $s\in \dZ_{\geq 0}$, 
+\[
+  \prob_{E\in \cE} (\dim \selmer_p E=s) = \lim_{n\to \infty} \prob_{Z,W\in \orthogonalgrassmannian_n(\dF_p)}(\dim(Z\cap W)=s) .
+\]
+\end{conjecture}
+
+Our goal is to show that $\selmer_p E$ actually is an intersection of maximal 
+isotropic subspaces in an infinite-dimensional quadratic space. For simplicity, 
+we assume $p$ is odd. 
+
+We'll start with a construction for local fields. Let $E$ be an elliptic curve 
+over some $\dQ_v$. Put $V_v=\h^1(\dQ_v,E[p])$; this is a finite-dimensional 
+$\dF_p$-vector space. Recall the \emph{Weil pairing} is a bilinear pairing  
+\[
+  e:E[p]\times E[p] \to \dG_m
+\]
+This induces a pairing 
+\[
+  \langle\cdot,\cdot\rangle_v:V_v\times V_v\xrightarrow\smallsmile \h^2(\dQ_v,E[p]^{\otimes 2}) \xrightarrow e \h^2(\dQ_v,\dG/m) = \operatorname{Br}\dQ_v\hookrightarrow\dQ/\dZ .
+\]
+So we have $Q_v:V_v\to \dR/\dZ$. Define $W_v=\im(E(\dQ_v)/p\subset V_v)$. It is 
+a theorem of O'Neil (using Tate local duality) that $W_v$ is a maximal isotropic 
+subspace of $V_v$. 
+
+Over global fields, let $V_v=\h^1(\dQ_v,E[p])$ for each $v$. Let 
+\[
+  V = \prod_v' (V_v,W_v) \simeq \h^1(\dA,E[p]) .
+\]
+As before, we have a commutative diagram 
+\[\xymatrix{
+  & \h^1(\dQ,E[p]) \ar[d]^-\beta \\
+  E(\dA)/p \ar[r]^-\alpha 
+    & \h^1(\dA,E[p])
+}\]
+Let $Q=\sum Q_v:V\to \dR/\dZ$. 
+
+\begin{theorem}
+The images of $\alpha$ and $\beta$ are maximal isotropic. Moreover, $\beta$ is 
+injective, and $\im(\alpha)\cap \im(\beta) = \beta(\selmer_p E)\simeq \selmer_p E$. 
+\end{theorem}
+
+So in some sense, $\selmer_p E$ ``is'' the intersection of two maximal isotropic 
+subspaces of $\h^1(\dA,E[p])$. 
+
+To show that $\alpha$ has maximal isotropic image, simply note that 
+$\im(\alpha)=\prod_v W_v$. To show the same about $\im(\beta)$, use some global 
+duality theorems (9-term Poitu-Tate exact sequence). To show that $\beta$ is 
+injective, use \v Cebotarev, plus the fact that the Sylow $p$-subgroup of 
+$\operatorname{GL}_2(\dF_p)$ is cyclic. The third part follows from the first 
+two and the definition of $\selmer_p(E)$. 
+
+
+
+

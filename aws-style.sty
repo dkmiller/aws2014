@@ -18,25 +18,29 @@
 \DeclareMathOperator{\gal}{Gal}       % Galois group
 \DeclareMathOperator{\h}{H}           % (co)homology
 \DeclareMathOperator{\im}{im}         % image
+\DeclareMathOperator{\orthogonalgrassmannian}{OGr}
 \DeclareMathOperator{\orthogonal}{O}  % orthogonal group
 \DeclareMathOperator{\prob}{Prob}     % probability
-\DeclareMathOperator{\proj}{Proj}    % projective spectrum
+\DeclareMathOperator{\proj}{Proj}     % projective spectrum
 \DeclareMathOperator{\rank}{rk}       % rank of a module
+\DeclareMathOperator{\selmer}{Sel}    % Selmer group
 \DeclareMathOperator{\spec}{Spec}     % spectrum of a ring
 \DeclareMathOperator{\specialorthogonal}{SO} % special orthogonal group
 \DeclareMathOperator{\squarefree}{sf} % number of square-free integers in [N, 2 N]
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\trace}{tr}         % trace
+\DeclareMathOperator{\supp}{supp}     % support
+\DeclareMathOperator{\trace}{tr}      % trace
 \DeclareMathOperator{\unitary}{U}
 \DeclareMathOperator{\unitarysymplectic}{USp} % unitary symplectic group
 
 \newcommand{\cD}{\mathcal{D}}
+\newcommand{\cE}{\mathcal{E}}
 \newcommand{\cM}{\mathcal{M}}
 \newcommand{\cP}{\mathcal{P}}
 \newcommand{\cR}{\mathcal{R}}
 \newcommand{\dA}{\mathbf{A}}
 \newcommand{\dC}{\mathbf{C}}
 \newcommand{\dF}{\mathbf{F}}
+\newcommand{\dG}{\mathbf{G}}
 \newcommand{\dN}{\mathbf{N}}
 \newcommand{\dP}{\mathbf{P}}
 \newcommand{\dQ}{\mathbf{Q}}
@@ -70,3 +74,9 @@
 \makeatletter
 \def\thanksauthor{\gdef\@thefnmark{}\@footnotetext}
 \makeatother
+
+
+\DeclareFontFamily{U}{wncy}{}
+\DeclareFontShape{U}{wncy}{m}{n}{<->wncyr10}{}
+\DeclareSymbolFont{mcy}{U}{wncy}{m}{n}
+\DeclareMathSymbol{\sha}{\mathord}{mcy}{"58}  
