@@ -406,6 +406,79 @@ So
 So instead of talking about zeta functions of function fields, we will talk about 
 zeta functions of curves. 
 
+Recall the following theorem of Weil. 
+
+\begin{theorem}[Weil]
+Let $C$ be a smooth projective curve of genus $g$ over $\dF_q$, and let 
+$Z_C(u) = \exp\left(\sum_n \# C(\dF_{q^n}) \frac{u^n}{n}\right)$. Then 
+\[
+  Z_C(u) = \frac{P_C(u)}{(1-u)(1-q u)} ,
+\]
+where $P_C(u)\in \dZ[u]$ has degree $2 g$. Moreover, if we write 
+$P_C(u) = \prod_j (1-u \alpha_j(C))$, then$|\alpha_j(C)| = \sqrt q$. 
+\end{theorem}
+
+So taking logarithmic derivatives, we get 
+\[
+  \# C(\dF_{q^n}) - (q^n+1) = -\sum_{j=1}^{2 g} \alpha_j(C) ,
+\]
+so statistics of the zeros give statistics on the number of points. Of course, 
+we get the famous Weil bound: 
+\[
+  |\# C(\dF_{q^n}) - (q^n+1)| \leq 2 g\sqrt q^n .
+\]
+Let's introduce some notation. Let $\theta_C$ be the $2 g\times 2 g$ matrix 
+with diagonal entries $e^{i\theta_j(C)}$, where 
+$\alpha_j(C) = \sqrt q e^{i\theta_j(C)}$. We want to study the distribution of 
+the zeros when $C$ varies over a family of curves of genus $g$ over 
+$\dF_q$. Let $\sF(g,q)$ be such a family. 
+
+\begin{theorem}[Deligne]
+Let $\cM_g(\dF_q)$ be the moduli space of curves of genus $g$ over $\dF_q$. Let 
+$f$ be any class function on $\unitarysymplectic(2 g)$ (which is the monodromy 
+group of the family). Then 
+\[
+  \lim_{q\to \infty}\frac{1}{\# \cM_g(\dF_q)} \sum_{C\in \cM_g(\dF_q)} f(\theta_C) = \int_{\unitarysymplectic(2 g)} f(U)\, d U .
+\]
+\end{theorem}
+
+This is one of the key ingredients of Katz-Sarnak's proof of Montgomery's 
+pair-correlation conjecture over function fields. 
+
+What if we fix $q$ and let $g\to \infty$. What statistics do we get? The 
+first work in this direction was due to Kurlberg-Rudnick on hyperelliptic 
+curves. Let $\cH_g(\dF_q)$ be the moduli space of hyperelliptic curves over 
+$\dF_q$. Such a curve is $y^2=F(x)$, where $F(x)$ is square-free. The genus 
+is $g=\left\lfloor\frac{d-1}{2}\right\rfloor$, where $d=\deg F$. We ware 
+interested in 
+\[
+  \lim_{g\to \infty} \frac{\#\{C\in \cH_g(\dF_q):\# C(\dF_q)=m\}}{\#\{C\in \cH_g(\dF_q)\}} \sim \prob\left(\sum_{i=1}^{q+1} X_i = m\right) ,
+\]
+where the $X_i$ are independent and identically distributed random variables 
+such that 
+\[
+  X_i = \begin{cases} 0 & \text{probability }\frac{q}{2(q+1)} \\ 1 & \text{probability } \frac{1}{q+1} \\ 2 & \text{probability }\frac{q}{2(q+1)} \end{cases}
+\]
+At the end, this depends on $\prob(F(a)=0)$ for $a\in \dF_q$. This is just 
+\[
+  \frac{\#\{F\in \sF_d:F(a)=0\}}{\#\sF_d} = \frac{1}{q+1} 
+\]
+where $\sF_d$ is the set of square-free monic polynomials of degree $d$. Note 
+that $\frac{1}{q+1} = \frac{1-q}{q^2-1}$. We have that 
+\[
+  \# C(\dF_q) = \sum_{a\in \dP^1(\dF_q)} (1+\chi_2(F(a))) = q+1+\sum_{a\in \dP^1(\dF_q)} \chi_2(F(a)) .
+\]
+To get the distribution, we average over this family. 
+
+\begin{theorem}
+\[
+  \frac{\#\{F\in\sF_d:F(a_i)=\alpha_i\text{ for }1\leq i\leq q\}}{\# \sF_d} \sim \left(\frac{1}{q+1}\right)^m \left(\frac{q}{(q+1)(q-1)}\right)^{q-m} 
+\]
+where $m$ is the number of $\alpha_i$ which are zero. 
+\end{theorem}
+
+\textbf{\ldots stopped taking notes\ldots}
+
 
 
 
