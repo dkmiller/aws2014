@@ -431,3 +431,111 @@ that it is surjective (i.e. that we have \emph{big monodromy}).
 
 
 
+
+\subsection{Geometric analytic number theory that will not appear}
+
+We could look at the question of geometric twin primes / prime clusters. The 
+variety involved would be the moduli space of \emph{factored} $f$ and factored 
+$g$ such that $g=f+1$. In other words, we would look at the moduli space of 
+tuples $(z_1,\dots,z_n,w_1,\dots,w_n)$ such that 
+$(x-z_1)\dotsm (x-z_n) + 1 = (x-w_1)\dotsm (x-w_n)$. This variety admits an 
+action of $S_n\times S_n$, and we would want to understand the cohomology of 
+the variety together with its $S_n\times S_n$-action. Pollack and Barry-Soroker 
+have proved ``large $q$-limit'' versions of these theorems. 
+
+There is also a geometric Limik / Malle / Bhargava conjecture. The relevant 
+moduli spaces are $X_n$ being the moduli space of degree-$d$ covers (or 
+$G$-covers) of $\dP^1$ with $n$ branch points (Hurwitz spaces). 
+
+There is a geometric Poonen-Rains conjecture, involving a moduli space of 
+elliptic surfaces together with elements of $\h^2(E,\dZ/p)$. 
+
+There is a geometric Limik-Duke, on equidistribution of Heegner points. A 
+recent paper of Shende and Tsimerman does this for ``generalized theta divisors 
+inside abelian varieties.'' 
+
+Finally, there is a geometric Batyrev-Manin. The relevant moduli space has 
+$X(\dF_q(t))$ classifying maps from $\dP^1\to X$, and $X_n$ classifying 
+degree-$n$ maps from $\dP^1$ to $X$. 
+
+
+
+
+
+\subsection{Geometric Cohen-Lenstra}
+
+\begin{conjecture}[Cohen, Lenstra]
+Let $\ell$ be an odd prime, and $E_{r,\ell,N}$ be the expected value, as $d$ 
+ranges over square-free integers in $[N, 2 N]$, of 
+\[
+  \operatorname{Surj}(\class(\dQ(\sqrt{-d})),(\dZ/\ell)^r)
+\]
+Then 
+\[
+  \lim_{N\to \infty} E_{N,\ell,r} = 1 .
+\]
+\end{conjecture}
+
+For example, $E_{N,\ell,1}$ is the expected value of $\# \class[\ell]-1$. 
+
+The function field Cohen-Lenstra works as follows. Start with the following 
+analogy:
+\begin{center}
+\begin{tabular}{c|c}
+number field & function field \\ \hline
+$\dQ(\sqrt{-d})$ & $C_f:y^2=f(x)$ \\
+$\cO\subset \dQ(\sqrt{-d})$ & $U=C_f-\infty_f$ \\
+ideal of $\cO$ & effective divisor on $U$ \\
+class group of $\cO$ & $\picard(U) = \jacobian(C_f)(\dF_q)$ \\
+$\class(\cO)[\ell]$ & $\jacobian(C_f)[\ell](\dF_q)$
+\end{tabular}
+\end{center}
+This suggests a definition: $\conf^n(\ell)$ is the moduli space of 
+hyperelliptic curves with $\ell$-level structure, i.e. pairs 
+$(f,P)$, where $f$ is squarefree monic of degree $n$ and 
+$P\in \jacobian(C_f)[\ell]$ nonzero. The space $\conf^n(\ell)$ is a cover of 
+$\conf^n$ via $(f,P)\mapsto f$. It is in fact a finite \'etale map of degree 
+$\ell^{2 g}-1$. Let $E_{q,\ell,r,n}$ be 
+\[
+  \dE_f\left(\operatorname{Surj}(\jacobian(C_f)(\dF_q),(\dZ/\ell)^r)\right) \qquad(\text{``expected value''}).
+\]
+For example, $E_{q,\ell,q,n}$ is the average of 
+$\#\jacobian(C_f)(\dF_q)[\ell]-1$. This is the average of 
+\[
+  \#\pi^{-1}(f)(\dF_q) = \frac{\#\conf^n(\ell)(\dF_q)}{\#\conf^n(\dF_q)} ,
+\]
+where $\pi:\conf^n(\ell) \to \conf^n$ is the canonical cover. So Cohen-Lenstra 
+predicts that 
+\[
+  \lim_{n\to \infty} \frac{\#\conf^n(\ell)(\dF_q)}{\conf^n(\dF_q)} = 1 .
+\]
+A ``large $q$-limit'' version of this has already been done. It works only if  
+$\conf^n(\ell)$ is geometrically irreducible (i.e.\ connected). Think of 
+$\conf^n(\ell)\xrightarrow\pi\conf^n$ as the action of 
+$\pi_1(\conf^n)=\braid_n$ on $\pi^{-1}(f) =(\dZ/\ell)^{2 g}$. After 
+choosing bases, this is just a representation 
+$\braid_n \to \symplectic_{2 g}(\dF_\ell)$.  Saying that $\conf^n(\ell)$ is 
+connected is identical to saying that $\braid_n$ acts transitively on 
+$(\dZ/\ell)^{2 g}\minus 0$. This is true, because we know that 
+$\braid_n\to \symplectic_{2 g}(\dF_\ell)$ is surjective! This is a theorem of 
+A'Cumpo, Yu, Achter-Pries, and Hall. In fact, the big monodromy result gives 
+\[
+  \lim_{q\to \infty} \text{average } \operatorname{Surj}(\jacobian(C_f),(\dZ/\ell)^r) = 1 .
+\]
+for all $r$. This amounts to studying the action of $\symplectic_{2g}(\dF_\ell)$ 
+on surjections from $(\dZ/\ell)^{2 g}$ to $(\dZ/\ell)^r$. Dually, we could look 
+at the action on $\operatorname{Inj}((\dZ/\ell)^r,(\dZ/\ell)^{2 g})$. But this 
+action is \emph{not} transitive. In other words, given an action 
+$Q:(\dZ/\ell)^r \to (\dZ/\ell)^{2 g}$, $Q^\ast\omega$ could be\ldots. What's 
+going on is not $\symplectic_{2g}(\dF_\ell)$, but a coset 
+$\symplectic_{2 g}^{(q)}(\dF_\ell)\subset \generalsymplectic_{2 g}(\dF_\ell)$. 
+
+It turns out that the action of Frobenius on these components to multiply 
+$Q^\ast \omega$ by $q$. The only fixed ones are those with $Q^\ast\omega=0$, i.e. 
+the orbit of isotropic subspaces of $(\dZ/\ell)^{2 g}$. The symplectic group 
+$\symplectic_{2 g}(\dF_\ell)$ \emph{does} act transitively on those isotropic 
+subspaces. 
+
+
+
+
